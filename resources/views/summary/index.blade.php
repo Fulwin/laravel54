@@ -1,38 +1,32 @@
 @extends('layout.main')
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            <table class="table mb-0">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-hover mb-0">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">标题</th>
+                    <th scope="col">内容</th>
+                    <th scope="col">创建时间</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                @foreach($summaries as $summary)
+                    <tr>
+                        <th>{{ $summary->id }}</th>
+                        <td>
+                            <a href="/summaries/{{ $summary->id }}">{{ $summary->title }}</a>
+                        </td>
+                        <td>{{ str_limit($summary->content, 70, '...') }}</td>
+                        <td>{{ $summary->created_at->diffForHumans() }}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
+
+            {{ $summaries->links() }}
         </div>
     </div>
 @endsection
