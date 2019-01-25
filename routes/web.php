@@ -17,4 +17,4 @@ Route::put('/summaries/{summary}', 'SummariesController@update');
 // 删除工作总结
 Route::get('/summaries/delete', 'SummariesController@delete');
 
-Route::get('/users/create', 'UsersController@create')->name('users.create');
+Route::resource('users', 'UsersController');
