@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Summary;
 
-class SummaryController extends Controller
+class SummariesController extends Controller
 {
     // 列表页
     public function index()
