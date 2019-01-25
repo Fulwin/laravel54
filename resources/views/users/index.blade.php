@@ -18,7 +18,12 @@
                 </div>
 
                 <div class="pull-left">
-                    <a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a>
+                    <div>
+                        <a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a>
+                        @if(!$user->activated)
+                            <span class="label label-warning">未激活</span>
+                        @endif
+                    </div>
                     <div class="text-muted">{{ $user->email }}</div>
                     <div class="text-muted">
                         <small class="mr-10">#{{ $user->id }}</small>

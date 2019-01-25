@@ -33,7 +33,7 @@
 
                     <hr>
 
-                    <p>还没账号？<a href="{{ route('users.create') }}">现在注册！</a></p>
+                    <p>还没账号？<a href="mailto:developer.fulwin@outlook.com">联系管理员</a>获得账号！</p>
                 </div>
             </div>
         </div>
