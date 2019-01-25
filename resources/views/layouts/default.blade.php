@@ -8,13 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/base.css">
-    <title>工作总结</title>
+    <title>@yield('title', 'ATOP') - 华拓光通信OA系统</title>
 </head>
 <body>
 
-    @include('layout.header')
+    @include('layouts.header')
 
-    @include('layout.sidebar')
+    @include('layouts.sidebar')
 
     <div id="main">
         @yield('content')
