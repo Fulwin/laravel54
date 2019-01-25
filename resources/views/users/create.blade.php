@@ -36,11 +36,11 @@
                             <div class="radio">
                                 <label style="margin-right: 20px;">
                                     <input type="radio" name="gender"
-                                           value="1" {{ old('gender') == 1 ? 'checked' : '' }}>男
+                                           value="1" {{ old('gender') ? (old('gender') == 1 ? 'checked' : '') : 'checked' }}>男
                                 </label>
                                 <label>
                                     <input type="radio" name="gender"
-                                           value="0" {{ old('gender') == 0 ? 'checked' : '' }}>女
+                                           value="0"  {{ old('gender') ? (old('gender') == 0 ? 'checked' : '') : '' }}>女
                                 </label>
                             </div>
                         </div>
