@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app()->getLocale() }}">
 <head>
-    <title>@yield('title', 'ATOP') - 华拓光通信OA系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="stylesheet" href="/css/app.css">
+
+    <title>@yield('title', 'ATOP') - 华拓光通信OA系统</title>
 </head>
 <body>
 
-    @include('layouts._header')
+    <div id="app" class="{{ route_class() }}-page">
+        @include('layouts._header')
 
-    <div class="container">
-        @include('shared._messages')
-        @yield('content')
-        @include('layouts._footer')
+        <div class="container">
+            @include('shared._messages')
+            @yield('content')
+            @include('layouts._footer')
+        </div>
     </div>
 
     <script src="/js/app.js"></script>

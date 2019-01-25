@@ -77,6 +77,7 @@ p {
 
 #logout {
   cursor: default;
+
   &:hover {
     background-color: transparent;
   }
@@ -130,10 +131,12 @@ aside {
   section {
     padding: 10px 0;
     margin-top: 20px;
+
     &:first-child {
       border: 0;
       padding-top: 0;
     }
+
     span {
       display: block;
       margin-bottom: 3px;
@@ -146,10 +149,12 @@ section.user_info {
   padding-bottom: 10px;
   margin-top: 20px;
   text-align: center;
+
   .gravatar {
     float: none;
     max-width: 70px;
   }
+
   h1 {
     font-size: 1.4em;
     letter-spacing: -1px;
@@ -174,4 +179,44 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+}
+
+/* Users edit */
+
+.gravatar_edit {
+  margin: 15px auto;
+  text-align: center;
+
+  .gravatar {
+    float: none;
+    max-width: 100px;
+  }
+}
+
+.users-index-page {
+  .user-box {
+    margin: 30px 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 30px;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    & > div:nth-child(2) {
+      margin-left: 20px;
+    }
+
+    .created-at {
+      margin-right: 20px;
+    }
+
+    .mr-10 {
+      margin-right: 10px;
+    }
+
+    .mr-20 {
+      margin-right: 20px;
+    }
+  }
 }

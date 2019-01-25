@@ -8515,3 +8515,41 @@ input {
   height: auto !important;
 }
 
+/* Users edit */
+
+.gravatar_edit {
+  margin: 15px auto;
+  text-align: center;
+}
+
+.gravatar_edit .gravatar {
+  float: none;
+  max-width: 100px;
+}
+
+.users-index-page .user-box {
+  margin: 30px 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 30px;
+}
+
+.users-index-page .user-box:last-child {
+  border-bottom: none;
+}
+
+.users-index-page .user-box > div:nth-child(2) {
+  margin-left: 20px;
+}
+
+.users-index-page .user-box .created-at {
+  margin-right: 20px;
+}
+
+.users-index-page .user-box .mr-10 {
+  margin-right: 10px;
+}
+
+.users-index-page .user-box .mr-20 {
+  margin-right: 20px;
+}
+

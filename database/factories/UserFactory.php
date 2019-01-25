@@ -13,27 +13,18 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+    $date_time = $faker->date . ' ' . $faker->time;
     static $password;
 
     return [
+        'account' => $faker->unique()->name,
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
+        'gender' => $faker->numberBetween(0, 1),
         'remember_token' => str_random(10),
-    ];
-});
-
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Models\Summary::class, function (Faker\Generator $faker) {
-
-    return [
-        'type' => 'summary',
-        'user_id' => $faker->numberBetween(1, 10),
-        'title' => $faker->sentence(6),
-        'content' => $faker->paragraph(30),
-        'next_week_mission' => $faker->paragraph(10),
-        'coordination' => $faker->paragraph(10),
-        'year' => 2019,
-        'week' => $faker->numberBetween(1, 6),
+        'created_at' => $date_time,
+        'updated_at' => $date_time,
+        'is_admin' => false
     ];
 });

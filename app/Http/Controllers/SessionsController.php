@@ -7,12 +7,20 @@ use Auth;
 
 class SessionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+    }
+
     // 登陆页
     public function create()
     {
         return view('sessions.create');
     }
 
+    // 登陆逻辑
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -25,13 +33,14 @@ class SessionsController extends Controller
         // 用户认证
         if (Auth::attempt($user, request()->has('remember'))) {
             session()->flash('success', Auth::user()->name . ' 欢迎回来！');
-            return redirect()->route('users.show', [Auth::user()]);
+            return redirect()->intended(route('users.show', [Auth::user()]));
         } else {
             session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
             return redirect()->back();
         }
     }
 
+    // 退出登陆
     public function destroy()
     {
         Auth::logout();
