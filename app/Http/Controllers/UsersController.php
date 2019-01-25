@@ -4,17 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Mail;
 
 class UsersController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store', 'index']
-        ]);
-
-        $this->middleware('guest', [
-            'only' => []
+            'except' => ['confirmEmail']
         ]);
     }
 
@@ -54,9 +51,25 @@ class UsersController extends Controller
             'gender' => $request->gender,
         ]);
 
-        session()->flash('success', "用户 {$request->name} 创建成功~");
+        $this->sendEmailConfirmationTo($user);
 
-        return redirect()->route('users.show', [$user]);
+        session()->flash('success', "验证邮件已发送到填写的注册邮箱上，等待用户激活。");
+
+        return redirect('users');
+    }
+
+    protected function sendEmailConfirmationTo($user)
+    {
+        $view = 'emails.confirm';
+        $data = compact('user');
+        $from = 'oa@atoptechnology.com';
+        $name = 'ATOP-华拓光通信OA系统';
+        $to = $user->email;
+        $subject = '您的OA系统账号已生成，请确认激活';
+
+        Mail::send($view, $data, function ($message) use ($from, $name, $to, $subject) {
+            $message->from($from, $name)->to($to)->subject($subject);
+        });
     }
 
     // 更新页面
@@ -91,5 +104,19 @@ class UsersController extends Controller
         $user->delete();
         session()->flash('success', '成功删除用户！');
         return back();
+    }
+
+    // 用户激活
+    public function confirmEmail($token)
+    {
+        $user = User::where('activation_token', $token)->firstOrFail();
+
+        $user->activated = true;
+        $user->activation_token = null;
+        $user->save();
+
+        Auth::login($user);
+        session()->flash('success', '您已成功激活账号');
+        return redirect()->route('users.show', [$user]);
     }
 }
