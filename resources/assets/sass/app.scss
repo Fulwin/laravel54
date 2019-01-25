@@ -8,7 +8,7 @@ $primary-color: #f46660;
 /* universal */
 
 body {
-  padding-top: 70px;
+  padding-top: 80px;
 }
 
 section {
@@ -72,6 +72,13 @@ p {
 
   .text-atop {
     color: $primary-color;
+  }
+}
+
+#logout {
+  cursor: default;
+  &:hover {
+    background-color: transparent;
   }
 }
 

@@ -6,7 +6,7 @@
         <div class="col-md-offset-3 col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div>创建用户</div>
+                    <h5>创建用户</h5>
                 </div>
                 <div class="panel-body">
 

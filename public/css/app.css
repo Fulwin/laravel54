@@ -8336,7 +8336,7 @@ button.close {
 /* universal */
 
 body {
-  padding-top: 70px;
+  padding-top: 80px;
 }
 
 section {
@@ -8407,6 +8407,14 @@ p {
 
 #logo .text-atop {
   color: #f46660;
+}
+
+#logout {
+  cursor: default;
+}
+
+#logout:hover {
+  background-color: transparent;
 }
 
 /* footer */
