@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Summary;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -19,8 +20,8 @@ class SummaryPolicy
         //
     }
 
-    public function destroy(User $currentUser, User $user)
+    public function destroy(User $user, Summary $summary)
     {
-        return $currentUser->id === $user->id;
+        return $user->id === $summary->user->id;
     }
 }

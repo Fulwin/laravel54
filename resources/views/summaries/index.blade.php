@@ -23,7 +23,7 @@
                             </small>
                         </div>
 
-                        @can('destroy', $summary->user)
+                        @can('destroy', $summary)
                         <div class="pull-right">
                             <form action="{{ route('summaries.destroy', $summary->id) }}">
                                 {{ csrf_field() }}

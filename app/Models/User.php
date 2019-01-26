@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         $this->notify(new ResetPassword($token));
     }
+
+    public function isAuthorOf($model)
+    {
+        return $this->id === $model->user_id;
+    }
 }
