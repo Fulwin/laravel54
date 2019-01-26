@@ -147,6 +147,8 @@
 .simditor {
     position: relative;
     border: 1px solid #c9d8db;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .simditor .simditor-wrapper {
