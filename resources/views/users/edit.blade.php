@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.app')
 @section('title', '修改用户资料')
 
 @section('content')

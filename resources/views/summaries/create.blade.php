@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.app')
 @section('title', request('type') === 'common' ? '创建通用模板总结' : '创建资源模板总结')
 
 @section('nav')

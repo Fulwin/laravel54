@@ -1,5 +1,8 @@
-@extends('layouts.default')
+@extends('layouts.app')
 @section('title', $summary->title)
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/simditor.css') }}">
+@stop
 
 @section('nav')
     <ol class="breadcrumb">
@@ -97,14 +100,14 @@
                         </div>
                     </div>
                     <div class="media">
-                        <div class="media-left">
+                        {{--<div class="media-left">
                             <img src="{{ $summary->user->gravatar(40) }}" class="img-circle" alt="">
-                        </div>
+                        </div>--}}
                         <div class="media-body">
                             <form action="" method="post">
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <textarea name="content" rows="5" class="form-control w-100" placeholder="回复内容"></textarea>
+                                    <textarea id="simditor" name="content" rows="5" class="form-control w-100" placeholder="回复内容"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">发表</button>
                             </form>
@@ -171,3 +174,30 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script type="text/javascript"  src="{{ asset('js/module.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('js/hotkeys.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('js/uploader.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('js/simditor.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            var simditor = new Simditor({
+                textarea: $('#simditor'),
+                toolbar: [
+                    'bold', 'italic', 'underline', 'strikethrough', 'color', 'ol', 'ul',
+                    'blockquote', 'code', 'link', 'image', 'hr', 'indent', 'outdent', 'alignment'
+                ],
+                placeholder: '在此输入评论内容...',
+                upload: {
+                    url: '',
+                    params: { _token: '{{ csrf_token() }}' },
+                    fileKey: 'upload_file',
+                    connectionCount: 3,
+                    leaveConfirm: '文件上传中，关闭此页面将取消上传'
+                },
+                pasteImage: true
+            });
+        });
+    </script>
+@stop
