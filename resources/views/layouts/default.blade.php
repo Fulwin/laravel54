@@ -18,11 +18,13 @@
     <div id="app" class="{{ route_class() }}-page">
         @include('layouts._header')
 
-        <div class="container">
+        <div class="container" id="main">
             @include('shared._messages')
+            @yield('nav')
             @yield('content')
-            @include('layouts._footer')
         </div>
+
+        @include('layouts._footer')
     </div>
 
     <script src="/js/app.js"></script>
