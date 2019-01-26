@@ -11,10 +11,10 @@ Route::get('/summaries', 'SummariesController@index');
 Route::get('/summaries/create', 'SummariesController@create');
 Route::post('/summaries', 'SummariesController@store');
 // 工作总结详情页
-Route::get('/summaries/{summary}', 'SummariesController@show');
+Route::get('/summaries/{summaries}', 'SummariesController@show');
 // 编辑工作总结
-Route::get('/summaries/{summary}\edit', 'SummariesController@edit');
-Route::put('/summaries/{summary}', 'SummariesController@update');
+Route::get('/summaries/{summaries}\edit', 'SummariesController@edit');
+Route::put('/summaries/{summaries}', 'SummariesController@update');
 // 删除工作总结
 Route::get('/summaries/delete', 'SummariesController@delete');
 */

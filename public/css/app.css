@@ -8515,6 +8515,14 @@ input {
   height: auto !important;
 }
 
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
 /* Users edit */
 
 .gravatar_edit {
@@ -8528,9 +8536,9 @@ input {
 }
 
 .users-index-page .user-box {
-  margin: 30px 0;
+  margin: 20px 0;
   border-bottom: 1px solid #ddd;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 .users-index-page .user-box:last-child {
@@ -8545,11 +8553,9 @@ input {
   margin-right: 20px;
 }
 
-.users-index-page .user-box .mr-10 {
-  margin-right: 10px;
-}
-
-.users-index-page .user-box .mr-20 {
-  margin-right: 20px;
+.summaries-index-page .summary-box {
+  margin: 20px 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
 }
 

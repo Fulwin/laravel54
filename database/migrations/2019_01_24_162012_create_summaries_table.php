@@ -15,7 +15,7 @@ class CreateSummariesTable extends Migration
     {
         Schema::create('summaries', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type')->default('summary')->comment('模板类型');
+            $table->string('type')->default('summaries')->comment('模板类型');
             $table->integer('user_id')->comment('创建用户id');
             $table->tinyInteger('is_publish')->default(0)->comment('是否发布，默认为未发布0，发布为1');
             $table->string('title', 100)->comment('总结标题');
@@ -26,6 +26,7 @@ class CreateSummariesTable extends Migration
             $table->integer('week')->comment('发布周');
             $table->string('cc')->nullable()->comment('抄送人');
             $table->string('allowed')->nullable()->comment('允许查看的用户');
+            $table->dateTime('published_at')->nullable()->comment('发布时间');
             $table->timestamps();
         });
     }

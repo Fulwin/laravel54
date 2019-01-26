@@ -3,26 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Summary;
+use Auth;
 
 class SummariesController extends Controller
 {
     // 列表页
     public function index()
     {
-        $summaries = Summary::orderBy('created_at', 'desc')->paginate(6);
-        return view('summary/index', compact('summaries'));
+        $summaries = Summary::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(6);
+        return view('summaries/index', compact('summaries'));
     }
 
     // 详情页
     public function show(Summary $summary)
     {
-        return view('summary/show', compact('summary'));
+        return view('summaries/show', compact('summary'));
     }
 
     // 创建页
     public function create()
     {
-        return view('summary/create');
+        return view('summaries/create');
     }
 
     // 创建逻辑
@@ -35,7 +36,7 @@ class SummariesController extends Controller
 
         $summary = new Summary();
         $summary->user_id = 1;
-        $summary->type = 'summary';
+        $summary->type = 'summaries';
         $summary->title = request('title');
         $summary->content = request('content');
         $summary->next_week_mission = request('content');

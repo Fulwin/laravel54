@@ -23,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('status')->default(1)->comment('状态');
             $table->tinyInteger('gender')->default(1)->comment('性别 0:女 1:男');
             $table->integer('department_id')->nullable()->comment('部门id');
-            $table->integer('post_id')->nullable()->comment('职位id');
             $table->integer('report_id')->nullable()->comment('汇报关系id');
             $table->integer('level_id')->nullable()->comment('级别id');
             $table->rememberToken();
