@@ -11,13 +11,15 @@ class Summary extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getTypeAttribute($value)
+    public function getTypeTextAttribute()
     {
+        $type = $this->attributes['type'];
+
         $types = [
             'common' => '通用模板',
             'resource' => '资源模板'
         ];
 
-        return $types[$value];
+        return $types[$type];
     }
 }

@@ -23,7 +23,7 @@
                     <div class="clearfix">
                         <div class="pull-left">
                             <div class="text-muted">
-                                <b>{{ $summary->type }}</b>
+                                <b>{{ $summary->typeText }}</b>
                                 <small class="mx-5">&middot;</small>
                                 <small>创建于 {{ $summary->created_at }}</small>
                                 <small class="mx-5">/</small>
@@ -164,7 +164,7 @@
                 <div class="list-group">
                     @foreach($latestSummaries as $ls)
                         <a href="{{ route('summaries.show', $ls->id) }}" class="list-group-item">
-                            <span>{{ $ls->type }}</span>
+                            <span>{{ $ls->typeText }}</span>
                             <span class="mx-5">&middot;</span>
                             <span>{{ $ls->title }}</span>
                         </a>
