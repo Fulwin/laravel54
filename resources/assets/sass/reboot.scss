@@ -1,0 +1,260 @@
+#app {
+  margin-top: 75px;
+
+  #main {
+    min-height: 860px;
+  }
+}
+
+section {
+  overflow: auto;
+}
+
+a.text-muted:hover {
+  color: inherit;
+}
+
+.label {
+  display: inline-block;
+  padding: .2em .4em .3em;
+  font-weight: normal;
+}
+
+textarea {
+  resize: vertical;
+}
+
+blockquote {
+  margin: 1em 0 !important;
+  background-color: #f5f8fc;
+  padding: 10px;
+  padding-left: 12px;
+  border-left: 2px solid $primary-color;
+  color: #8796A8;
+  font-size: inherit;
+}
+
+.media {
+  margin-top: 20px;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+.breadcrumb {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 15px;
+  background-color: transparent;
+  margin-bottom: 0;
+}
+
+/* header */
+
+.navbar-default {
+  background-color: #fff;
+  border: none;
+  border-top: 4px solid $primary-color;
+  box-shadow: 0px 1px 11px 2px rgba(42, 42, 42, 0.1);
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: -1px;
+  line-height: 50px;
+  font-weight: bold;
+  color: $primary-color;
+
+  .text-atop {
+    color: $primary-color;
+  }
+}
+
+#logout {
+  cursor: default;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 60px;
+  padding: 10px 0;
+  border-top: 1px solid $default-border-color;
+  color: #777;
+  background-color: #fff;
+
+  #logo {
+    line-height: 41px;
+  }
+
+  a {
+    color: #555;
+  }
+
+  a:hover {
+    color: #222;
+  }
+
+  small {
+    float: left;
+  }
+
+  ul {
+    float: right;
+    list-style: none;
+
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+
+  img.brand-icon {
+    width: 17px;
+    height: 17px;
+  }
+
+  .slogon {
+    font-size: 13px;
+    font-weight: bold;
+  }
+}
+
+
+/* sidebar */
+
+aside {
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+  }
+}
+
+section.user_info {
+  padding-bottom: 10px;
+  margin-top: 20px;
+  text-align: center;
+
+  .gravatar {
+    float: none;
+    max-width: 70px;
+  }
+
+  h1 {
+    font-size: 1.4em;
+    letter-spacing: -1px;
+    margin-bottom: 3px;
+    margin-top: 15px;
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+  max-width: 50px;
+  border-radius: 50%;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  margin-bottom: 15px;
+}
+
+textarea {
+  min-height: 4.5em;
+}
+
+input {
+  height: auto !important;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.box {
+  overflow: hidden;
+}
+
+.panel {
+  box-shadow: 0px 1px 2px 0 rgba(101, 129, 156, .15);
+}
+
+// 带tabs的面板
+.panel-tabs {
+  .panel-heading {
+    padding: 0;
+  }
+
+  .nav-tabs {
+    border-color: transparent;
+    position: relative;
+    top: 1px;
+
+    li {
+      border-bottom: 2px solid transparent;
+
+      &.active {
+        border-color: $primary-color;
+      }
+
+      a {
+        color: #636b6f;
+        border: none;
+        background-color: transparent;
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+
+    li.active a:hover,
+    li.active a:focus
+    {
+      border: none;
+      border-color: $primary-color;
+      background: transparent;
+    }
+  }
+}
+
+.box-primary {
+  .panel {
+    border-top: 2px solid $primary-color;
+  }
+}
+
+/* Users edit */
+
+.gravatar_edit {
+  margin: 15px auto;
+  text-align: center;
+
+  .gravatar {
+    float: none;
+    max-width: 100px;
+  }
+}

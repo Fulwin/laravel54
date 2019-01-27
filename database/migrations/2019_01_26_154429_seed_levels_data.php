@@ -16,31 +16,38 @@ class SeedLevelsData extends Migration
         $levels = [
             [
                 'name' => '助理/实习生',
-                'lv' => 1
+                'lv' => 1,
+                'sort' => 1
             ],
             [
                 'name' => '工程师',
-                'lv' => 2
+                'lv' => 2,
+                'sort' => 2
             ],
             [
                 'name' => '主管',
-                'lv' => 3
+                'lv' => 3,
+                'sort' => 3
             ],
             [
                 'name' => '经理',
-                'lv' => 4
+                'lv' => 4,
+                'sort' => 4
             ],
             [
                 'name' => '总监',
-                'lv' => 5
+                'lv' => 5,
+                'sort' => 5
             ],
             [
                 'name' => '副总',
-                'lv' => 6
+                'lv' => 6,
+                'sort' => 6
             ],
             [
                 'name' => '总经理',
-                'lv' => 7
+                'lv' => 7,
+                'sort' => 7
             ],
         ];
 

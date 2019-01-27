@@ -1,13 +1,19 @@
 @extends('layouts.app')
 @section('title', '修改用户资料')
 
+@section('nav')
+    <ol class="breadcrumb">
+        <li><a href="/">首页</a></li>
+        <li><a href="{{ route('users.index') }}">用户管理</a></li>
+        <li class="active">编辑用户</li>
+    </ol>
+@stop
+
 @section('content')
     <div class="row">
-        <div class="col-md-offset-2 col-md-8">
+        <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h5>修改用户资料</h5>
-                </div>
+                <div class="panel-heading">修改用户资料</div>
                 <div class="panel-body">
 
                     @include('shared._errors')

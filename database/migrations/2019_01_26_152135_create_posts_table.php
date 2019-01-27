@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50)->comment('职位名称');
+            $table->string('name', 50)->index()->comment('职位名称');
             $table->string('describe')->nullable()->comment('职位描述');
             $table->integer('department_id')->nullable()->comment('所属部门id');
             $table->tinyInteger('status')->default(1)->comment('状态');

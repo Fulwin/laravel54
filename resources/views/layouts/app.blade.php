@@ -10,6 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-select.css') }}">
     @yield('styles')
 
     <title>@yield('title', 'ATOP') - 华拓光通信OA系统</title>
@@ -29,6 +30,12 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-select.js') }}"></script>
+    <script src="{{ asset('js/i18n/defaults-zh_CN.js') }}"></script>
+    <script>
+        $.fn.selectpicker.Constructor.BootstrapVersion = 3;
+        $.fn.selectpicker.Constructor.DEFAULTS.size = 10;
+    </script>
     @yield('scripts')
 </body>
 </html>

@@ -1,0 +1,51 @@
+
+
+// 用户列表
+.users-index-page {
+  .user-box {
+    padding: 15px 20px;
+    display: flex;
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+    &:hover {
+      background-color: #f5f8fa;
+    }
+
+    .flex-item {
+
+      &:first-child {
+        width: 280px;
+      }
+
+      &:nth-child(2) {
+        width: 200px;
+      }
+
+      &:nth-child(3) {
+        width: 100px;
+      }
+
+      &:last-child {
+        width: 72px;
+      }
+    }
+  }
+
+  .flex-heading {
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 0;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+}

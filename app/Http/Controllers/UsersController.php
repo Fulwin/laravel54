@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
+use App\Models\Department;
+use App\Models\Level;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Mail;
 use Auth;
 
@@ -19,7 +24,7 @@ class UsersController extends Controller
     // 列表页
     public function index()
     {
-        $users = User::orderBy('created_at', 'desc')->paginate(10);
+        $users = User::ignoreAdmin()->filterAbnormalUsers()->ignoreSelf()->orderBy('created_at', 'desc')->paginate(10);
         return view('users.index', compact('users'));
     }
 
@@ -32,31 +37,24 @@ class UsersController extends Controller
     // 创建页面
     public function create()
     {
-        return view('users.create');
+        $users = User::where('status', '>', 0)->orderBy(DB::raw('convert(`name` using gbk)'))->get();
+        $departments = Department::orderBy(DB::raw('convert(`name` using gbk)'))->get();
+        $posts = Post::orderBy(DB::raw('convert(`name` using gbk)'))->get();
+        $levels = Level::orderBy('sort', 'asc')->get();
+
+        return view('users.create', compact('users', 'departments', 'posts', 'levels'));
     }
 
     // 创建逻辑
-    public function store(Request $request)
+    public function store(UserRequest $request, User $user)
     {
-        $this->validate($request, [
-            'account' => 'required|max:20|min:2|unique:users',
-            'name' => 'required|max:20',
-            'email' => 'required|email|unique:users'
-        ]);
-
-        $user = User::create([
-            'account' => $request->account,
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt('secret'),
-            'gender' => $request->gender,
-        ]);
+        $user->fill(request()->all());
+        $user->password = bcrypt('secret');
+        $user->save();
 
         $this->sendEmailConfirmationTo($user);
 
-        session()->flash('success', "验证邮件已发送到填写的注册邮箱上，等待用户激活。");
-
-        return redirect('users');
+        return redirect('users')->with('success', '验证邮件已发送到填写的注册邮箱上，等待用户激活');
     }
 
     protected function sendEmailConfirmationTo($user)
@@ -64,7 +62,7 @@ class UsersController extends Controller
         $view = 'emails.confirm';
         $data = compact('user');
         $to = $user->email;
-        $subject = "您的OA系统账号已生成，请确认激活。";
+        $subject = "您的OA系统账号已生成，请确认激活";
 
         Mail::send($view, $data, function ($message) use ($to, $subject) {
             $message->to($to)->subject($subject);

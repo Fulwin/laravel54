@@ -26,6 +26,7 @@ class UsersTableSeeder extends Seeder
         $user->gender = 1;
         $user->department_id = null;
         $user->level_id = null;
+        $user->report_id = 0;
         $user->is_admin = true;
         $user->activated = true;
         $user->save();

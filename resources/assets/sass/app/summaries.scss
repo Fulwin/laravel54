@@ -1,0 +1,45 @@
+%create-summary-btn {
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// 总结列表页
+.summaries-index-page {
+  .summary-box {
+    margin-bottom: 20px;
+    border-bottom: 1px solid $default-border-color;
+    padding-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  .create-summary-btn {
+    @extend %create-summary-btn
+  }
+}
+
+// 总结详情页
+.summaries-show-page {
+  .section-box {
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .latest-summary {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .create-summary-btn {
+    @extend %create-summary-btn
+  }
+}

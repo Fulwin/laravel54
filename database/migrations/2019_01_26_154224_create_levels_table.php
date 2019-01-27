@@ -15,10 +15,11 @@ class CreateLevelsTable extends Migration
     {
         Schema::create('levels', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50)->comment('级别名称');
+            $table->string('name', 50)->index()->comment('级别名称');
             $table->string('describe')->nullable()->comment('级别描述');
             $table->tinyInteger('status')->default(1)->comment('状态');
             $table->tinyInteger('lv')->comment('级别等级');
+            $table->tinyInteger('sort')->nullable()->comment('排序');
             $table->timestamps();
         });
     }
