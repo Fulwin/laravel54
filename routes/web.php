@@ -1,30 +1,5 @@
 <?php
 
-Route::get('/', 'StaticPagesController@home')->name('home');
-Route::get('/help', 'StaticPagesController@help')->name('help');
-Route::get('/about', 'StaticPagesController@about')->name('about');
-
-/*
-// 工作总结列表页
-Route::get('/summaries', 'SummariesController@index');
-// 创建工作总结
-Route::get('/summaries/create', 'SummariesController@create');
-Route::post('/summaries', 'SummariesController@store');
-// 工作总结详情页
-Route::get('/summaries/{summaries}', 'SummariesController@show');
-// 编辑工作总结
-Route::get('/summaries/{summaries}\edit', 'SummariesController@edit');
-Route::put('/summaries/{summaries}', 'SummariesController@update');
-// 删除工作总结
-Route::get('/summaries/delete', 'SummariesController@delete');
-*/
-
-// 工作总结
-Route::resource('summaries', 'SummariesController');
-
-// 用户管理
-Route::resource('users', 'UsersController');
-
 // 会话
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');
@@ -38,4 +13,20 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-Route::resource('softwares', 'SoftwareController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+// 需要登陆才能访问的页面
+Route::group(['middleware' => 'auth:web'], function () {
+    // 静态页
+    Route::get('/', 'StaticPagesController@home')->name('home');
+    Route::get('/help', 'StaticPagesController@help')->name('help');
+    Route::get('/about', 'StaticPagesController@about')->name('about');
+
+    // 工作总结
+    Route::resource('summaries', 'SummariesController');
+
+    // 用户管理
+    Route::resource('users', 'UsersController');
+
+    // 软件管理
+    Route::resource('softwares', 'SoftwareController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+});
