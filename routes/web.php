@@ -3,7 +3,6 @@
 // 会话
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');
-Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 // 用户激活
 Route::get('activation/confirm/{token}', 'UsersController@confirmEmail')->name('confirm.email');
@@ -20,6 +19,9 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/', 'StaticPagesController@home')->name('home');
     Route::get('/help', 'StaticPagesController@help')->name('help');
     Route::get('/about', 'StaticPagesController@about')->name('about');
+
+    // 退出登陆
+    Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
     // 工作总结
     Route::resource('summaries', 'SummariesController');

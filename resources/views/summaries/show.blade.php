@@ -20,8 +20,8 @@
 
                     <h3 class="mb-20 mt-0">{{ $summary->title }}</h3>
 
-                    <div class="clearfix">
-                        <div class="pull-left">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-12">
                             <div class="text-muted">
                                 <b>{{ $summary->typeText }}</b>
                                 <small class="mx-5">&middot;</small>
@@ -36,7 +36,7 @@
                         </div>
 
                         @can('destroy', $summary)
-                        <div class="pull-right">
+                        <div class="col-md-3 col-sm-12">
                             <div class="clearfix">
                                 <div class="pull-left">
                                     <a href="{{ route('summaries.edit', $summary->id) }}" class="btn btn-default btn-xs mr-10">

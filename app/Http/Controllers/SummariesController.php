@@ -18,7 +18,8 @@ class SummariesController extends Controller
     public function show(Summary $summary)
     {
         $summariesCount = Summary::where('user_id', $summary->user_id)->count();
-        $latestSummaries = Summary::where('user_id', $summary->user_id)->orderBy('created_at', 'desc')->limit(5)->get();
+        $latestSummaries = Summary::where('user_id', $summary->user_id)->where('id', '<>', $summary->id)->orderBy('created_at', 'desc')->limit(5)->get();
+
         return view('summaries/show', compact('summary','summariesCount', 'latestSummaries'));
     }
 

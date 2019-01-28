@@ -8397,14 +8397,8 @@ blockquote {
 }
 
 #logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: -1px;
-  line-height: 50px;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 22px;
   color: #f46660;
 }
 
