@@ -2,49 +2,81 @@
 
 // 用户列表
 .users-index-page {
-  .user-box {
-    padding: 15px 20px;
-    display: flex;
-  }
 
-  .flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+  @media screen and (min-width: 768px){
+    .user-box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 15px;
 
-    &:hover {
-      background-color: #f5f8fa;
+      &:hover {
+        background-color: #f5f8fa;
+      }
+
+      .attr-item {
+        flex: 1;
+      }
+
+      .user-name-email {
+        flex: 3;
+      }
+
+      .user-dpl {
+        flex: 3;
+      }
+
+      .user-report {
+        flex: 2;
+      }
     }
 
-    .flex-item {
-
-      &:first-child {
-        width: 280px;
-      }
-
-      &:nth-child(2) {
-        width: 200px;
-      }
-
-      &:nth-child(3) {
-        width: 100px;
-      }
-
-      &:last-child {
-        width: 72px;
-      }
+    .user-pages {
+      padding-left: 15px;
     }
   }
 
-  .flex-heading {
-    font-size: 16px;
-    font-weight: 500;
-    padding-bottom: 0;
+  @media screen and (max-width: 768px){
+    .user-box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 15px 0;
 
-    &:hover {
-      background-color: transparent;
+      &:hover {
+        background-color: transparent;
+      }
+
+      .attr-item {
+        flex: 1;
+      }
+
+      .user-name-email {
+        flex: 5;
+      }
+
+      .user-dpl {
+        display: none;
+        flex: 3;
+        text-align: center;
+      }
+
+      .user-report {
+        display: none;
+        flex: 2;
+      }
+
+      .user-actions {
+        display: none;
+      }
+    }
+
+    .user-pages {
+      padding-left: 0;
+
+      .pagination {
+        margin-bottom: 0;
+      }
     }
   }
 

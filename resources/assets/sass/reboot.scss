@@ -15,9 +15,8 @@ a.text-muted:hover {
 }
 
 .label {
-  display: inline-block;
-  padding: .2em .4em .3em;
-  font-weight: normal;
+  position: relative;
+  top: -2px;
 }
 
 textarea {
@@ -61,7 +60,7 @@ blockquote {
 }
 
 #logo {
-  font-weight: 600;
+  font-weight: bold;
   font-size: 22px;
   color: $primary-color;
 
@@ -84,12 +83,7 @@ footer {
   margin-top: 60px;
   padding: 10px 0;
   border-top: 1px solid $default-border-color;
-  color: #777;
   background-color: #fff;
-
-  #logo {
-    line-height: 41px;
-  }
 
   a {
     color: #555;
@@ -99,28 +93,61 @@ footer {
     color: #222;
   }
 
-  small {
-    float: left;
+  .copyright {
+    font-size: 75%;
   }
 
-  ul {
-    float: right;
-    list-style: none;
+  @media screen and (min-width: 768px) {
+    .footer-inner {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
 
-    li {
-      float: left;
-      margin-left: 15px;
+      ul {
+        float: right;
+        li {
+          float: left;
+          margin-left: 20px;
+        }
+      }
     }
   }
 
-  img.brand-icon {
-    width: 17px;
-    height: 17px;
-  }
+  @media screen and (max-width: 768px) {
+    .footer-inner {
+      text-align: center;
 
-  .slogon {
-    font-size: 13px;
-    font-weight: bold;
+      ul {
+        margin-top: 5px;
+
+        li {
+          display: inline-block;
+          margin: 0 10px;
+        }
+      }
+
+      .copyright {
+        margin-top: 5px;
+      }
+    }
+    /*.footer-inner {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    ul {
+      float: right;
+      li {
+        float: left;
+        margin-left: 20px;
+      }
+    }*/
+
   }
 }
 
