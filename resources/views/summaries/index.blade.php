@@ -11,15 +11,15 @@
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-body p-30">
+                <div class="panel-body">
 
                     @foreach($summaries as $summary)
-                    <div class="summary-box clearfix">
-                        <div class="pull-left mr-20">
+                    <div class="summary-box">
+                        <div class="summary-item">
                             <img src="{{ $summary->user->gravatar() }}" class="img-circle" width="50" alt="">
                         </div>
 
-                        <div class="pull-left">
+                        <div class="summary-item px-15">
                             <div class="summary-title">
                                 <a href="{{ route('summaries.show', $summary->id) }}">{{ $summary->title }}</a>
                             </div>
@@ -31,7 +31,7 @@
                         </div>
 
                         @can('destroy', $summary)
-                        <div class="pull-right">
+                        <div class="summary-item">
                             <form action="{{ route('summaries.destroy', $summary->id) }}">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}

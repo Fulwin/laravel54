@@ -64,6 +64,10 @@ blockquote {
   font-size: 22px;
   color: $primary-color;
 
+  &:hover {
+    text-decoration: none;
+  }
+
   .text-atop {
     color: $primary-color;
   }
