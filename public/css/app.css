@@ -8368,6 +8368,25 @@ blockquote {
   font-size: inherit;
 }
 
+.user-select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+/*
+.panel {
+  .panel-heading {
+    padding: 10px 20px;
+  }
+
+  .panel-body {
+    padding: 20px;
+  }
+}
+*/
+
 .media {
   margin-top: 20px;
 }
