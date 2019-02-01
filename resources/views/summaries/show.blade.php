@@ -128,11 +128,11 @@
                         <a href="{{ route('summaries.create', ['type' => 'common']) }}" class="btn btn-default btn-block create-summary-btn">
                             <i class="glyphicon glyphicon-plus"></i> 创建通用模板总结
                         </a>
-                        @if(Auth::user()->department_id === 11)
+                        @can('isRD')
                             <a href="{{ route('summaries.create', ['type' => 'resource']) }}" class="btn btn-default btn-block create-summary-btn">
                                 <i class="glyphicon glyphicon-plus"></i> 创建资源模板总结
                             </a>
-                        @endif
+                        @endcan
                     </div>
                 </div>
             </div>

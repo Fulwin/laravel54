@@ -19,4 +19,9 @@ class Policy
 	    // 		return true;
 	    // }
 	}
+
+    public function isRD(User $user)
+    {
+        return $user->department_id === 11;
+    }
 }

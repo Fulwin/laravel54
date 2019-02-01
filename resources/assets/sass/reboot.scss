@@ -37,18 +37,6 @@ blockquote {
   user-select: none;
 }
 
-/*
-.panel {
-  .panel-heading {
-    padding: 10px 20px;
-  }
-
-  .panel-body {
-    padding: 20px;
-  }
-}
-*/
-
 .media {
   margin-top: 20px;
 }
@@ -152,22 +140,6 @@ footer {
         margin-top: 5px;
       }
     }
-    /*.footer-inner {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    ul {
-      float: right;
-      li {
-        float: left;
-        margin-left: 20px;
-      }
-    }*/
-
   }
 }
 
@@ -263,6 +235,10 @@ input {
       }
 
       a {
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         color: #636b6f;
         border: none;
         background-color: transparent;
