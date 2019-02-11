@@ -30,6 +30,7 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/layer.js') }}"></script>
     <script src="{{ asset('js/bootstrap-select.js') }}"></script>
     <script src="{{ asset('js/i18n/defaults-zh_CN.js') }}"></script>
     <script>

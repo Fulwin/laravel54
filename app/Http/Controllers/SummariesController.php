@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Summary;
+use App\Models\User;
 use Auth;
 
 class SummariesController extends Controller
@@ -26,7 +28,11 @@ class SummariesController extends Controller
     // 创建页
     public function create()
     {
-        return view('summaries/create');
+        $departments = Department::with(['users' => function($query) {
+            $query->ignoreSelf()->filterAbnormalUsers()->ignoreAdmin();
+        }])->get();
+
+        return view('summaries/create', compact('departments'));
     }
 
     // 创建逻辑

@@ -1,45 +1,157 @@
 %create-summary-btn {
-  margin-bottom: 15px;
+	margin-bottom: 15px;
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+%user-box {
+	min-width: 66px;
+	min-height: 66px;
+	display: inline-block;
+	padding: 10px;
+	line-height: 1.6;
+	background-color: #f5f8fa;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	-webkit-transition: border 0.2s ease-in-out;
+	transition: border 0.2s ease-in-out;
+	overflow: hidden;
+}
+
+%user-box-mobile {
+	display: block;
+	padding: 10px;
+	line-height: 1.6;
+	background-color: #f5f8fa;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	-webkit-transition: border 0.2s ease-in-out;
+	transition: border 0.2s ease-in-out;
+	overflow: hidden;
 }
 
 // 总结列表页
 .summaries-index-page {
-  .summary-box {
-    margin-bottom: 20px;
-    border-bottom: 1px solid $default-border-color;
-    padding-bottom: 20px;
-    &:last-child {
-      margin-bottom: 0;
-      border-bottom: none;
-    }
-  }
+	.summary-box {
+		margin-bottom: 20px;
+		border-bottom: 1px solid $default-border-color;
+		padding-bottom: 20px;
 
-  .create-summary-btn {
-    @extend %create-summary-btn
-  }
+		&:last-child {
+			margin-bottom: 0;
+			border-bottom: none;
+		}
+	}
+
+	.create-summary-btn {
+		@extend %create-summary-btn;
+	}
+}
+
+.users-container {
+
+	.user-box, .insert-user {
+		margin: 0 10px 5px 0;
+		padding: 10px;
+		line-height: 1.6;
+		background-color: #f5f8fa;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		-webkit-transition: border 0.2s ease-in-out;
+		transition: border 0.2s ease-in-out;
+		overflow: hidden;
+	}
+
+	.user-box {
+
+		&:before, &:after {
+			content: "";
+			display: table;
+		}
+
+		&:after {
+			clear: both;
+		}
+
+		.user-avatar {
+			float: left;
+			padding-right: 10px;
+			img.img-circle {
+				width: 43px;
+			}
+		}
+
+		.user-infos {
+			float: left;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		}
+	}
+
+	.insert-user {
+		min-height: 66px;
+		min-width: 66px;
+
+		&:after {
+			content: '+';
+			width: 100%;
+			font-size: 28px;
+			font-weight: bold;
+			text-align: center;
+			display: block;
+			vertical-align: middle;
+			cursor: pointer;
+		}
+
+		&:hover:after {
+			opacity: .85;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.user-box, .insert-user {
+			display: block;
+			margin-right: 0;
+			margin-bottom: 15px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	@media screen and (min-width: 768px) {
+		.user-box, .insert-user {
+			display: inline-block;
+		}
+	}
+
+}
+
+.summaries-create-page {
+
 }
 
 // 总结详情页
 .summaries-show-page {
-  .section-box {
-    margin-bottom: 30px;
+	.section-box {
+		margin-bottom: 30px;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 
-  .latest-summary {
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+	.latest-summary {
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 
-  .create-summary-btn {
-    @extend %create-summary-btn
-  }
+	.create-summary-btn {
+		@extend %create-summary-btn
+	}
 }

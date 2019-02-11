@@ -16,4 +16,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .copyDirectory('resources/assets/simditor/css', 'public/css')
     .copyDirectory('resources/assets/simditor/js', 'public/js')
     .copyDirectory('resources/assets/bootstrap-select/css', 'public/css')
-    .copyDirectory('resources/assets/bootstrap-select/js', 'public/js');
+    .copyDirectory('resources/assets/bootstrap-select/js', 'public/js')
+    .copyDirectory('resources/assets/layer', 'public/js');
