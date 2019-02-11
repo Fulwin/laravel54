@@ -61,17 +61,30 @@
 
                             <!-- Split button -->
                             <div class="flex-item user-actions">
-                                @can('destroy', $user)
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-default btn-sm mb-5">
-                                    <i class="glyphicon glyphicon-edit"></i> 编辑
-                                </a>
-                                <form action="{{ route('users.destroy', $user->id) }}" method="post">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button class="btn btn-default btn-sm">
-                                        <i class="glyphicon glyphicon-trash"></i> 删除
+                                @can('update', $user)
+                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-default btn-sm mb-5">
+                                        <i class="glyphicon glyphicon-edit"></i> 编辑
+                                    </a>
+                                @else
+                                    <button type="button" disabled class="btn btn-default btn-sm mb-5">
+                                        <i class="glyphicon glyphicon-edit"></i> 编辑
                                     </button>
-                                </form>
+                                @endcan
+
+                                @can('destroy', $user)
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" class="btn btn-default btn-sm">
+                                            <i class="glyphicon glyphicon-trash"></i> 删除
+                                        </button>
+                                    </form>
+                                @else
+                                    <div>
+                                        <button type="button" disabled="" class="btn btn-default btn-sm">
+                                            <i class="glyphicon glyphicon-trash"></i> 删除
+                                        </button>
+                                    </div>
                                 @endcan
                             </div>
                         </div>

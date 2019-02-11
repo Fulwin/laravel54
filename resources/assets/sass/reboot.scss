@@ -33,6 +33,10 @@ blockquote {
 	font-size: inherit;
 }
 
+.user-select-none {
+  user-select: none;
+}
+
 .media {
 	margin-top: 20px;
 }
@@ -64,9 +68,19 @@ blockquote {
 	font-size: 22px;
 	color: $primary-color;
 
+<<<<<<< HEAD
 	.text-atop {
 		color: $primary-color;
 	}
+=======
+  &:hover {
+    text-decoration: none;
+  }
+
+  .text-atop {
+    color: $primary-color;
+  }
+>>>>>>> dac05cddee88b507212c933b821cd8e2f56af7ea
 }
 
 #logout {
@@ -80,6 +94,7 @@ blockquote {
 /* footer */
 
 footer {
+<<<<<<< HEAD
 	margin-top: 60px;
 	padding: 10px 0;
 	border-top: 1px solid $default-border-color;
@@ -151,6 +166,61 @@ footer {
 		}*/
 
 	}
+=======
+  margin-top: 60px;
+  padding: 10px 0;
+  border-top: 1px solid $default-border-color;
+  background-color: #fff;
+
+  a {
+    color: #555;
+  }
+
+  a:hover {
+    color: #222;
+  }
+
+  .copyright {
+    font-size: 75%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .footer-inner {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+
+      ul {
+        float: right;
+        li {
+          float: left;
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .footer-inner {
+      text-align: center;
+
+      ul {
+        margin-top: 5px;
+
+        li {
+          display: inline-block;
+          margin: 0 10px;
+        }
+      }
+
+      .copyright {
+        margin-top: 5px;
+      }
+    }
+  }
+>>>>>>> dac05cddee88b507212c933b821cd8e2f56af7ea
 }
 
 

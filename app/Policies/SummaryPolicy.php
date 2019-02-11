@@ -6,7 +6,7 @@ use App\Models\Summary;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class SummaryPolicy
+class SummaryPolicy extends Policy
 {
     use HandlesAuthorization;
 

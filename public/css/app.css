@@ -8368,6 +8368,13 @@ blockquote {
   font-size: inherit;
 }
 
+.user-select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 .media {
   margin-top: 20px;
 }
@@ -8399,6 +8406,10 @@ blockquote {
   font-weight: bold;
   font-size: 22px;
   color: #f46660;
+}
+
+#logo:hover {
+  text-decoration: none;
 }
 
 #logo .text-atop {
@@ -8465,24 +8476,6 @@ footer .copyright {
 }
 
 @media screen and (max-width: 768px) {
-  footer {
-    /*.footer-inner {
-		  display: flex;
-		  flex-direction: row;
-		  flex-wrap: nowrap;
-		  justify-content: space-between;
-		  align-items: center;
-		}
-
-		ul {
-		  float: right;
-		  li {
-			float: left;
-			margin-left: 20px;
-		  }
-		}*/
-  }
-
   footer .footer-inner {
     text-align: center;
   }
@@ -8594,6 +8587,10 @@ input {
 }
 
 .panel-tabs .nav-tabs li a {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: #636b6f;
   border: none;
   background-color: transparent;
@@ -9335,14 +9332,61 @@ input {
 }
 
 .summaries-index-page .summary-box {
-  margin-bottom: 20px;
-  border-bottom: 1px solid #d3e0e9;
-  padding-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.summaries-index-page .summary-box:last-child {
-  margin-bottom: 0;
-  border-bottom: none;
+.summaries-index-page .summary-box .summary-item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.summaries-index-page .summary-box .summary-item:nth-child(2) {
+  -webkit-box-flex: 8;
+      -ms-flex: 8;
+          flex: 8;
+}
+
+.summaries-index-page .summary-box .summary-item .summary-title {
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .summaries-index-page .summary-box {
+    padding: 15px;
+  }
+
+  .summaries-index-page .summary-box:hover {
+    background-color: #f5f8fa;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .summaries-index-page .summary-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  .summaries-index-page .summary-box .summary-item:last-child {
+    display: none;
+  }
 }
 
 .users-container .user-box,
