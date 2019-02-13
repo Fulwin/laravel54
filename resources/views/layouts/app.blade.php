@@ -9,8 +9,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('styles')
 
     <title>@yield('title', 'ATOP') - 华拓光通信OA系统</title>
