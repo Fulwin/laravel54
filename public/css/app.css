@@ -8658,6 +8658,137 @@ input {
   max-width: 100px;
 }
 
+.users-container .user-box,
+.users-container .insert-user {
+  margin: 0 10px 5px 0;
+  padding: 10px;
+  line-height: 1.6;
+  background-color: #f5f8fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: border 0.2s ease-in-out;
+  transition: border 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.users-container .user-box:before,
+.users-container .user-box:after {
+  content: "";
+  display: table;
+}
+
+.users-container .user-box:after {
+  clear: both;
+}
+
+.users-container .user-box .user-avatar {
+  float: left;
+  padding-right: 10px;
+}
+
+.users-container .user-box .user-avatar img.img-circle {
+  width: 43px;
+}
+
+.users-container .user-box .user-infos {
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.users-container .user-box[optional],
+.users-container .user-box[deletable],
+.users-container .insert-user {
+  cursor: pointer;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.users-container .user-box[optional]:hover,
+.users-container .user-box[optional]:focus,
+.users-container .user-box[deletable]:hover,
+.users-container .user-box[deletable]:focus,
+.users-container .insert-user:hover,
+.users-container .insert-user:focus {
+  border-color: #aaa;
+}
+
+.users-container .insert-user {
+  min-height: 66px;
+  min-width: 66px;
+}
+
+.users-container .insert-user:after {
+  content: '+';
+  width: 100%;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .users-container .user-box,
+  .users-container .insert-user {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .users-container .user-box:last-child,
+  .users-container .insert-user:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .users-container .user-box,
+  .users-container .insert-user {
+    display: inline-block;
+  }
+}
+
+.border-0 {
+  border: none;
+}
+
+.box-shadow-none {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.bootstrap-select.btn-default:active,
+.bootstrap-select.btn-default.active,
+.bootstrap-select.open > .btn-default.dropdown-toggle,
+.bootstrap-select .btn:focus,
+.bootstrap-select .btn:hover,
+.bootstrap-select .btn:active {
+  color: #636b6f;
+  border-color: #ccc;
+  background-color: inherit !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.bootstrap-select.btn-default:active,
+.bootstrap-select.btn-default.active,
+.bootstrap-select.open > .btn-default.dropdown-toggle,
+.bootstrap-select .btn:focus {
+  border-color: #8bb8df;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(139, 184, 223, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(139, 184, 223, 0.6);
+}
+
+.bootstrap-select > .dropdown-toggle {
+  border-color: #ccd0d2;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
 @media screen and (max-width: 768px) {
   .main {
     padding-left: 0;
@@ -9361,84 +9492,8 @@ input {
   border-bottom: none;
 }
 
-.users-container .user-box,
-.users-container .insert-user {
-  margin: 0 10px 5px 0;
-  padding: 10px;
-  line-height: 1.6;
-  background-color: #f5f8fa;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  -webkit-transition: border 0.2s ease-in-out;
-  transition: border 0.2s ease-in-out;
-  overflow: hidden;
-}
-
-.users-container .user-box:before,
-.users-container .user-box:after {
-  content: "";
-  display: table;
-}
-
-.users-container .user-box:after {
-  clear: both;
-}
-
-.users-container .user-box .user-avatar {
-  float: left;
-  padding-right: 10px;
-}
-
-.users-container .user-box .user-avatar img.img-circle {
-  width: 43px;
-}
-
-.users-container .user-box .user-infos {
-  float: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.users-container .insert-user {
-  min-height: 66px;
-  min-width: 66px;
-}
-
-.users-container .insert-user:after {
-  content: '+';
-  width: 100%;
-  font-size: 28px;
-  font-weight: bold;
-  text-align: center;
-  display: block;
-  vertical-align: middle;
-  cursor: pointer;
-}
-
-.users-container .insert-user:hover:after {
-  opacity: .85;
-}
-
-@media screen and (max-width: 768px) {
-  .users-container .user-box,
-  .users-container .insert-user {
-    display: block;
-    margin-right: 0;
-    margin-bottom: 15px;
-  }
-
-  .users-container .user-box:last-child,
-  .users-container .insert-user:last-child {
-    margin-bottom: 0;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .users-container .user-box,
-  .users-container .insert-user {
-    display: inline-block;
-  }
+.summaries-create-page .form-group .bootstrap-select {
+  width: 100% !important;
 }
 
 .summaries-show-page .section-box {

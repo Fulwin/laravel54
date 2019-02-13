@@ -309,6 +309,129 @@ input {
 	}
 }
 
+.users-container {
+
+	.user-box, .insert-user {
+		margin: 0 10px 5px 0;
+		padding: 10px;
+		line-height: 1.6;
+		background-color: #f5f8fa;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		-webkit-transition: border 0.2s ease-in-out;
+		transition: border 0.2s ease-in-out;
+		overflow: hidden;
+	}
+
+	.user-box {
+
+		&:before, &:after {
+			content: "";
+			display: table;
+		}
+
+		&:after {
+			clear: both;
+		}
+
+		.user-avatar {
+			float: left;
+			padding-right: 10px;
+			img.img-circle {
+				width: 43px;
+			}
+		}
+
+		.user-infos {
+			float: left;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		}
+	}
+
+	.user-box[optional], .user-box[deletable], .insert-user {
+		cursor: pointer;
+		transition: all .3s;
+
+		&:hover, &:focus {
+			border-color: #aaa;
+		}
+	}
+
+	.insert-user {
+		min-height: 66px;
+		min-width: 66px;
+
+		&:after {
+			content: '+';
+			width: 100%;
+			font-size: 28px;
+			font-weight: bold;
+			text-align: center;
+			display: block;
+			vertical-align: middle;
+			cursor: pointer;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.user-box, .insert-user {
+			display: block;
+			margin-right: 0;
+			margin-bottom: 15px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	@media screen and (min-width: 768px) {
+		.user-box, .insert-user {
+			display: inline-block;
+		}
+	}
+}
+
+.border-0 {
+	border: none;
+}
+
+.box-shadow-none {
+	box-shadow: none;
+}
+
+.bootstrap-select {
+	&.btn-default:active,
+	&.btn-default.active,
+	&.open > .btn-default.dropdown-toggle,
+	.btn:focus,
+	.btn:hover,
+	.btn:active {
+		color: #636b6f;
+		border-color: #ccc;
+		background-color: inherit !important;
+		box-shadow: none;
+	}
+}
+
+.bootstrap-select {
+	&.btn-default:active,
+	&.btn-default.active,
+	&.open > .btn-default.dropdown-toggle,
+	.btn:focus {
+		border-color: #8bb8df;
+		outline: 0;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(139, 184, 223, 0.6);
+	}
+}
+
+.bootstrap-select > .dropdown-toggle {
+	border-color: #ccd0d2;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
 @media screen and (max-width: 768px) {
 	.main {
 		padding-left: 0;
