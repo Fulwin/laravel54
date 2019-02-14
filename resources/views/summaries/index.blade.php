@@ -10,43 +10,59 @@
 @section('content')
     <div class="row">
         <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-body">
+            @foreach($summaries as $summary)
+                <div class="panel panel-default">
+                    <div class="panel-body">
 
-                    @foreach($summaries as $summary)
-                    <div class="summary-box">
-                        <div class="summary-item">
-                            <img src="{{ $summary->user->gravatar() }}" class="img-circle" width="50" alt="">
-                        </div>
-
-                        <div class="summary-item px-15">
-                            <div class="summary-title">
-                                <a href="{{ route('summaries.show', $summary->id) }}">{{ $summary->title }}</a>
+                        <div class="media">
+                            <div class="media-left">
+                                <img src="{{ $summary->user->gravatar() }}" class="img-circle" width="50" alt="">
                             </div>
-                            <small class="text-muted">
-                                <span>{{ $summary->user->name }}</span>
-                                <span>发布于</span>
-                                <span>{{ $summary->published_at }}</span>
-                            </small>
+                            <div class="media-body">
+                                <div class="summary-title">
+                                    <a href="{{ route('summaries.show', $summary->id) }}">{{ $summary->title }}</a>
+                                </div>
+                                <div class="text-muted">
+                                    <small>{{ $summary->user->name }}</small>
+                                    <small>发布于</small>
+                                    <small>{{ $summary->published_at }}</small>
+                                </div>
+                            </div>
                         </div>
 
-                        @can('destroy', $summary)
-                        <div class="summary-item">
-                            <form action="{{ route('summaries.destroy', $summary->id) }}">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <button class="btn btn-default btn-sm">
-                                    <i class="glyphicon glyphicon-trash"></i> 删除
-                                </button>
-                            </form>
-                        </div>
-                        @endcan
+                        {{--<div class="summary-box">
+                            <div class="summary-item">
+                                <img src="{{ $summary->user->gravatar() }}" class="img-circle" width="50" alt="">
+                            </div>
+
+                            <div class="summary-item px-15">
+                                <div class="summary-title">
+                                    <a href="{{ route('summaries.show', $summary->id) }}">{{ $summary->title }}</a>
+                                </div>
+                                <small class="text-muted">
+                                    <span>{{ $summary->user->name }}</span>
+                                    <span>发布于</span>
+                                    <span>{{ $summary->published_at }}</span>
+                                </small>
+                            </div>
+
+                            @can('destroy', $summary)
+                            <div class="summary-item">
+                                <form action="{{ route('summaries.destroy', $summary->id) }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button class="btn btn-default btn-sm">
+                                        <i class="glyphicon glyphicon-trash"></i> 删除
+                                    </button>
+                                </form>
+                            </div>
+                            @endcan
+                        </div>--}}
                     </div>
-                    @endforeach
-
-                    {{ $summaries->links() }}
                 </div>
-            </div>
+            @endforeach
+
+            {{ $summaries->links() }}
         </div>
 
         <div class="col-md-4">

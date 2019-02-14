@@ -10,7 +10,9 @@ use Auth;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable {
+        notify as protected laravelNotify;
+    }
 
     protected $guarded = ['post_id'];
 
@@ -22,6 +24,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function notify($instance)
+    {
+        // 如果要通知的是当前用户，就不必通知了
+        if ($this->id == Auth::id()) return;
+
+        $this->increment('notification_count');
+        $this->laravelNotify($instance);
+    }
+
+    public function markAsRead()
+    {
+        $this->notification_count = 0;
+        $this->save();
+        $this->unreadNotifications->markAsRead();
+    }
 
     public static function boot()
     {

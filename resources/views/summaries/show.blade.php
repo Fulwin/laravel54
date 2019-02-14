@@ -14,42 +14,58 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 main">
             <div class="panel panel-default">
                 <div class="panel-body">
+                    <div class="extra-padding">
+                        <h3 class="mb-20 mt-0">
+                            {{ $summary->title }}
+                            @can('destroy', $summary)
+                                <a href="{{ route('summaries.edit', $summary->id) }}" class="btn btn-default btn-xs">
+                                    <i class="glyphicon glyphicon-edit"></i> 编辑
+                                </a>
 
-                    <h3 class="mb-20 mt-0">{{ $summary->title }}</h3>
+                                <form action="{{ route('summaries.destroy', $summary->id) }}" class="d-inline-block">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button type="submit" class="btn btn-default btn-xs">
+                                        <i class="glyphicon glyphicon-trash"></i> 删除
+                                    </button>
+                                </form>
+                            @endcan
+                        </h3>
 
-                    <div class="text-muted">
-                        <img src="{{ $summary->user->gravatar(25) }}" class="img-circle mr-5" alt="">
-                        <small>{{ $summary->user->name }}</small>
-                        <small class="mx-5">&middot;</small>
-                        <b>{{ $summary->typeText }}</b>
-                        <small class="mx-5">&middot;</small>
-                        <small>创建于 {{ $summary->created_at }}</small>
-                        <small class="mx-5">/</small>
-                        <small>评论数 0</small>
-                        @if($summary->updated_at)
+                        <div class="text-muted">
+                            <img src="{{ $summary->user->gravatar(25) }}" class="img-circle mr-5" alt="">
+                            <small>{{ $summary->user->name }}</small>
+                            <small class="mx-5">&middot;</small>
+                            <b>{{ $summary->typeText }}</b>
+                            <small class="mx-5">&middot;</small>
+                            <small>创建于 {{ $summary->created_at }}</small>
                             <small class="mx-5">/</small>
-                            <small>更新于 {{ $summary->updated_at }}</small>
-                        @endif
-                    </div>
+                            <small>评论数 0</small>
+                            @if($summary->updated_at)
+                                <small class="mx-5">/</small>
+                                <small>更新于 {{ $summary->updated_at }}</small>
+                            @endif
+                        </div>
 
-                    <hr>
+                        <hr>
 
-                    <div class="section-box">
-                        <blockquote>总结内容</blockquote>
-                        <p>{{ $summary->content }}</p>
-                    </div>
+                        <div class="section-box">
+                            <blockquote>总结内容</blockquote>
+                            <p>{{ $summary->content }}</p>
+                        </div>
 
-                    <div class="section-box">
-                        <blockquote>下周任务</blockquote>
-                        <p>{{ $summary->next_week_mission }}</p>
-                    </div>
+                        <div class="section-box">
+                            <blockquote>下周任务</blockquote>
+                            <p>{{ $summary->next_week_mission }}</p>
+                        </div>
 
-                    <div class="section-box">
-                        <blockquote>协调事项</blockquote>
-                        <p>{{ $summary->coordination }}</p>
+                        <div class="section-box">
+                            <blockquote>协调事项</blockquote>
+                            <p>{{ $summary->coordination }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -96,43 +112,18 @@
         <div class="col-md-4">
             <div class="box box-primary">
                 <div class="panel panel-default">
+                    <div class="panel-heading">创建总结</div>
                     <div class="panel-body">
-                        @can('destroy', $summary)
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <a href="{{ route('summaries.edit', $summary->id) }}" class="btn btn-default btn-block">
-                                        <i class="glyphicon glyphicon-edit"></i> 编辑
-                                    </a>
-                                </div>
-
-                                <div class="col-xs-6">
-                                    <form action="{{ route('summaries.destroy', $summary->id) }}">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn btn-default btn-block">
-                                            <i class="glyphicon glyphicon-trash"></i> 删除
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        @endcan
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="panel panel-default">
-                <div class="panel-heading">创建总结</div>
-                <div class="panel-body">
-                    <div class="mx-auto text-center">
-                        <a href="{{ route('summaries.create', ['type' => 'common']) }}" class="btn btn-default btn-block create-summary-btn">
-                            <i class="glyphicon glyphicon-plus"></i> 创建通用模板总结
-                        </a>
-                        @can('isRD')
-                            <a href="{{ route('summaries.create', ['type' => 'resource']) }}" class="btn btn-default btn-block create-summary-btn">
-                                <i class="glyphicon glyphicon-plus"></i> 创建资源模板总结
+                        <div class="mx-auto text-center">
+                            <a href="{{ route('summaries.create', ['type' => 'common']) }}" class="btn btn-default btn-block create-summary-btn">
+                                <i class="glyphicon glyphicon-plus"></i> 创建通用模板总结
                             </a>
-                        @endcan
+                            @can('isRD')
+                                <a href="{{ route('summaries.create', ['type' => 'resource']) }}" class="btn btn-default btn-block create-summary-btn">
+                                    <i class="glyphicon glyphicon-plus"></i> 创建资源模板总结
+                                </a>
+                            @endcan
+                        </div>
                     </div>
                 </div>
             </div>

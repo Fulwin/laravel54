@@ -56,6 +56,10 @@ blockquote {
 	padding-bottom: 15px;
 	background-color: transparent;
 	margin-bottom: 0;
+	
+	li {
+		display: inline;
+	}
 }
 
 /* header */
@@ -414,6 +418,34 @@ input {
 		background-color: inherit !important;
 		box-shadow: none;
 	}
+}
+
+.main {
+	.extra-padding {
+		padding: 15px;
+	}
+
+	@media screen and (max-width: 768px) {
+		.extra-padding {
+			padding: 0;
+		}
+	}
+}
+
+.d-inline-block {
+	display: inline-block;
+}
+
+.d-inline {
+	display: inline;
+}
+
+.d-block {
+	display: block;
+}
+
+.d-flex {
+	display: flex;
 }
 
 .bootstrap-select {

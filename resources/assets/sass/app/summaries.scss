@@ -34,19 +34,8 @@
 
 // 总结列表页
 .summaries-index-page {
-	.summary-box {
-		margin-bottom: 20px;
-		border-bottom: 1px solid $default-border-color;
-		padding-bottom: 20px;
-
-		&:last-child {
-			margin-bottom: 0;
-			border-bottom: none;
-		}
-	}
-
-	.create-summary-btn {
-		@extend %create-summary-btn;
+	.summary-title {
+		font-size: 16px;
 	}
 }
 

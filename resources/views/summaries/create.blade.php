@@ -16,91 +16,94 @@
         <div class="col-md-8 main">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    @if(count($errors) > 0)
-                        <div class="alert alert-danger" role="alert">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </div>
-                    @endif
-                    <form action="/summaries" method="post">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label>标题</label>
-                            <input type="text" name="title" class="form-control" autocomplete="off" placeholder="标题">
-                        </div>
+                    <div class="extra-padding">
+                        @if(count($errors) > 0)
+                            <div class="alert alert-danger" role="alert">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </div>
+                        @endif
+                        <form action="{{ route('summaries.store') }}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="is_publish" value="1">
+                            <div class="form-group">
+                                <label>标题</label>
+                                <input type="text" name="title" class="form-control" autocomplete="off" placeholder="标题">
+                            </div>
 
-                        <div class="form-group">
-                            <label>本周总结</label>
-                            @if(request('type') == 'common')
+                            <div class="form-group">
+                                <label>本周总结</label>
+                                @if(request('type') == 'common')
                                     <textarea name="content" rows="10" class="form-control w-100"
                                               placeholder="本周总结内容"></textarea>
-                            @else
-                                <div class="panel panel-default panel-tabs">
-                                    <div class="panel-heading">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs" role="tablist">
-                                            <li role="presentation" class="active">
-                                                <a href="#detail1" aria-controls="detail1" role="tab" data-toggle="tab">
-                                                    总结内容(1) &times;
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div>
-                                            <!-- Tab panes -->
-                                            <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane active" id="detail1">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <div>
-                                                                    <label>工作类型</label>
+                                @else
+                                    <div class="panel panel-default panel-tabs">
+                                        <div class="panel-heading">
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active">
+                                                    <a href="#detail1" aria-controls="detail1" role="tab" data-toggle="tab">
+                                                        总结内容(1) &times;
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div>
+                                                <!-- Tab panes -->
+                                                <div class="tab-content">
+                                                    <div role="tabpanel" class="tab-pane active" id="detail1">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <div>
+                                                                        <label>工作类型</label>
+                                                                    </div>
+                                                                    <select name="summary_resources[1][type]" class="selectpicker" style="width: 100%;">
+                                                                        <option value="1">新项目开发</option>
+                                                                        <option value="2">生产支持</option>
+                                                                        <option value="3">样品准备</option>
+                                                                        <option value="4">售前售后支持</option>
+                                                                        <option value="5">新物料评估及试产支持</option>
+                                                                        <option value="6">客户/销售需求支持</option>
+                                                                        <option value="7">其它</option>
+                                                                        <option value="8">休假</option>
+                                                                    </select>
                                                                 </div>
-                                                                <select name="summary_resources[1][type]" class="selectpicker" style="width: 100%;">
-                                                                    <option value="1">新项目开发</option>
-                                                                    <option value="2">生产支持</option>
-                                                                    <option value="3">样品准备</option>
-                                                                    <option value="4">售前售后支持</option>
-                                                                    <option value="5">新物料评估及试产支持</option>
-                                                                    <option value="6">客户/销售需求支持</option>
-                                                                    <option value="7">其它</option>
-                                                                    <option value="8">休假</option>
-                                                                </select>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <div>
-                                                                    <label>工作耗时</label>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <div>
+                                                                        <label>工作耗时</label>
+                                                                    </div>
+                                                                    <input type="text" name="consuming_time" class="form-control" placeholder="工作耗时">
                                                                 </div>
-                                                                <input type="text" name="consuming_time" class="form-control" placeholder="工作耗时">
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <div>
-                                                                    <label>项目名称</label>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <div>
+                                                                        <label>项目名称</label>
+                                                                    </div>
+                                                                    <select name="summary_resources[1][project_id]" class="selectpicker" style="width: 100%;">
+                                                                        <option value="1">新项目开发</option>
+                                                                        <option value="2">生产支持</option>
+                                                                        <option value="3">样品准备</option>
+                                                                        <option value="4">售前售后支持</option>
+                                                                        <option value="5">新物料评估及试产支持</option>
+                                                                        <option value="6">客户/销售需求支持</option>
+                                                                        <option value="7">其它</option>
+                                                                        <option value="8">休假</option>
+                                                                    </select>
                                                                 </div>
-                                                                <select name="summary_resources[1][project_id]" class="selectpicker" style="width: 100%;">
-                                                                    <option value="1">新项目开发</option>
-                                                                    <option value="2">生产支持</option>
-                                                                    <option value="3">样品准备</option>
-                                                                    <option value="4">售前售后支持</option>
-                                                                    <option value="5">新物料评估及试产支持</option>
-                                                                    <option value="6">客户/销售需求支持</option>
-                                                                    <option value="7">其它</option>
-                                                                    <option value="8">休假</option>
-                                                                </select>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="form-group mb-0">
-                                                                <div>
-                                                                    <label>工作内容</label>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group mb-0">
+                                                                    <div>
+                                                                        <label>工作内容</label>
+                                                                    </div>
+                                                                    <textarea name="summary_resources[1][content]" class="form-control mb-0" rows="10" placeholder="工作内容"></textarea>
                                                                 </div>
-                                                                <textarea name="summary_resources[1][content]" class="form-control mb-0" rows="10" placeholder="工作内容"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -108,49 +111,49 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endif
-                        </div>
+                                @endif
+                            </div>
 
-                        <div class="form-group">
-                            <label>下周任务</label>
-                            <textarea name="next_week_mission" rows="10" class="form-control w-100"
-                                      placeholder="下周工作任务"></textarea>
-                        </div>
+                            <div class="form-group">
+                                <label>下周任务</label>
+                                <textarea name="next_week_mission" rows="10" class="form-control w-100"
+                                          placeholder="下周工作任务"></textarea>
+                            </div>
 
-                        <div class="form-group">
-                            <label>协调事项</label>
-                            <textarea name="coordination" rows="10" class="form-control w-100"
-                                      placeholder="需要其他部门辅助或协调的事项"></textarea>
-                        </div>
+                            <div class="form-group">
+                                <label>协调事项</label>
+                                <textarea name="coordination" rows="10" class="form-control w-100"
+                                          placeholder="需要其他部门辅助或协调的事项"></textarea>
+                            </div>
 
-                        <div class="form-group">
-                            <label>收件人</label>
-                            <div class="users-container">
-                                <div class="user-box">
-                                    <input type="hidden" name="addressee" value="{{ Auth::user()->report->id }}">
-                                    <div class="user-avatar">
-                                        <img src="{{ Auth::user()->report->gravatar(50) }}" class="img-circle" alt="">
-                                    </div>
-                                    <div class="user-infos">
-                                        <div class="user-heading">
-                                            <span class="user-name">{{ Auth::user()->report->name }}</span>
+                            <div class="form-group">
+                                <label>收件人</label>
+                                <div class="users-container">
+                                    <div class="user-box">
+                                        <input type="hidden" name="addressee" value="{{ Auth::user()->report->id }}">
+                                        <div class="user-avatar">
+                                            <img src="{{ Auth::user()->report->gravatar(50) }}" class="img-circle" alt="">
                                         </div>
-                                        <div class="user-body">
-                                            <small>{{ implode('/', Auth::user()->posts->pluck('name')->toArray()) }}</small>
+                                        <div class="user-infos">
+                                            <div class="user-heading">
+                                                <span class="user-name">{{ Auth::user()->report->name }}</span>
+                                            </div>
+                                            <div class="user-body">
+                                                <small>{{ implode('/', Auth::user()->posts->pluck('name')->toArray()) }}</small>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label>抄送人</label>
-                            @include('shared._user_selector')
-                        </div>
+                            <div class="form-group">
+                                <label>抄送人</label>
+                                @include('shared._user_selector')
+                            </div>
 
-                        <button type="submit" class="btn btn-primary">提交</button>
-                    </form>
+                            <button type="submit" class="btn btn-primary">提交</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

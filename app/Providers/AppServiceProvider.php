@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Summary;
+use App\Observers\SummaryObserver;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
-use App\Observers\SoftwareObserver;
-use App\Models\Software;
 use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Carbon::setLocale('zh');
+
+        Summary::observe(SummaryObserver::class);
     }
 
     /**

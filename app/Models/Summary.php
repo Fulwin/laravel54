@@ -11,6 +11,16 @@ class Summary extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function setCcAttribute($value)
+    {
+        $this->attributes['cc'] = implode(',', $value);
+    }
+
+    public function getCcAttribute($value)
+    {
+        return explode(',', $value);
+    }
+
     public function getTypeTextAttribute()
     {
         $type = $this->attributes['type'];

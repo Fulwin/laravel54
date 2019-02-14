@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SummaryRequest;
 use App\Models\Department;
 use App\Models\Summary;
 use App\Models\User;
 use Auth;
+use Carbon\Carbon;
 
 class SummariesController extends Controller
 {
     // 列表页
     public function index()
     {
-        $summaries = Summary::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(10);
+        $summaries = Summary::where('user_id', Auth::user()->id)
+                            ->where('is_publish', 1)->orderBy('created_at', 'desc')->paginate(10);
         return view('summaries/index', compact('summaries'));
     }
 
@@ -36,23 +39,14 @@ class SummariesController extends Controller
     }
 
     // 创建逻辑
-    public function store()
+    public function store(SummaryRequest $request)
     {
-        $this->validate(request(), [
-            'title' => 'required|string|max:100|min:5',
-            'next_week_mission' => 'required|string',
-        ]);
-
-        $summary = new Summary();
-        $summary->user_id = 1;
-        $summary->type = 'summaries';
-        $summary->title = request('title');
-        $summary->content = request('content');
-        $summary->next_week_mission = request('content');
-        $summary->coordination = request('content');
-        $summary->year = 2019;
-        $summary->week = 4;
-
+        $now = Carbon::now();
+        $summary = new Summary;
+        $summary->fill($request->except(['addressee']));
+        $summary->user_id = Auth::id();
+        $summary->year = $now->year;
+        $summary->week = $now->weekOfYear;
         $summary->save();
 
         return redirect('summaries');

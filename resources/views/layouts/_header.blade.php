@@ -48,6 +48,11 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
                     {{--<li><a href="{{ route('users.index') }}">用户列表</a></li>--}}
+                    <li class="notification-badge">
+                        <a href="{{ route('notifications.index') }}">
+                            消息通知 <span class="label label-{{ Auth::user()->notification_count > 0 ? 'danger' : 'default' }} text-white">{{ Auth::user()->notification_count }}</span>
+                        </a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             {{ Auth::user()->name }} <b class="caret"></b>

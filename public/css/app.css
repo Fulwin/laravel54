@@ -8397,6 +8397,10 @@ blockquote {
   margin-bottom: 0;
 }
 
+.breadcrumb li {
+  display: inline;
+}
+
 /* header */
 
 .navbar-default {
@@ -8771,6 +8775,34 @@ input {
   background-color: inherit !important;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+.main .extra-padding {
+  padding: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .main .extra-padding {
+    padding: 0;
+  }
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .bootstrap-select.btn-default:active,
@@ -9471,25 +9503,16 @@ input {
   }
 }
 
-.summaries-index-page .create-summary-btn,
 .summaries-show-page .create-summary-btn {
   margin-bottom: 15px;
 }
 
-.summaries-index-page .create-summary-btn:last-child,
 .summaries-show-page .create-summary-btn:last-child {
   margin-bottom: 0;
 }
 
-.summaries-index-page .summary-box {
-  margin-bottom: 20px;
-  border-bottom: 1px solid #d3e0e9;
-  padding-bottom: 20px;
-}
-
-.summaries-index-page .summary-box:last-child {
-  margin-bottom: 0;
-  border-bottom: none;
+.summaries-index-page .summary-title {
+  font-size: 16px;
 }
 
 .summaries-create-page .form-group .bootstrap-select {

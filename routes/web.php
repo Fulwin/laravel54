@@ -31,4 +31,7 @@ Route::group(['middleware' => 'auth:web'], function () {
 
     // 软件管理
     Route::resource('softwares', 'SoftwareController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+    // 通知
+    Route::resource('notifications', 'NotificationsController');
 });
