@@ -33,7 +33,7 @@ class SummaryPublish extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'mail'];
     }
 
     /**
@@ -44,10 +44,12 @@ class SummaryPublish extends Notification
      */
     public function toMail($notifiable)
     {
+        $url = url('/summaries/' . $this->summary->id);
+
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject($this->summary->user->name . '发表了新总结《'. $this->summary->title .'》')
+                    ->line($this->summary->user->name . '发表了新总结《'. $this->summary->title .'》')
+                    ->action('查看总结', $url);
     }
 
     public function toDatabase($notifiable)
