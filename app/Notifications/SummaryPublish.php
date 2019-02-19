@@ -45,11 +45,15 @@ class SummaryPublish extends Notification
     public function toMail($notifiable)
     {
         $url = url('/summaries/' . $this->summary->id);
-
+/*
         return (new MailMessage)
                     ->subject($this->summary->user->name . '发表了新总结《'. $this->summary->title .'》')
                     ->line($this->summary->user->name . '发表了新总结《'. $this->summary->title .'》')
                     ->action('查看总结', $url);
+        */
+        return (new MailMessage)
+                    ->subject($this->summary->user->name . '发表了新总结《'. $this->summary->title .'》')
+                    ->markdown('emails.summaries.publish', ['summary' => $this->summary]);
     }
 
     public function toDatabase($notifiable)
